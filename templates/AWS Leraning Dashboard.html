@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% block title %}AWS Learning Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root{--neon:#00ffd5;--bg:#050505;--card:#111;--border:rgba(255,255,255,0.1);}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:var(--bg);color:#fff;display:flex;}
+nav,.navbar,header{display:none!important}
+
+.sidebar{width:260px;background:#000;border-right:1px solid var(--border);height:100vh;position:fixed;padding:30px 20px}
+.logo{font-size:24px;font-weight:800;color:var(--neon);margin-bottom:50px;display:flex;align-items:center;gap:10px}
+
+.main{margin-left:260px;padding:40px;width:100%}
+.title{font-size:35px;font-weight:800;margin-bottom:20px;background:linear-gradient(to right,#fff,var(--neon));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:30px}
+.course-card{background:var(--card);border:1px solid var(--border);padding:30px 20px;border-radius:20px;text-align:center;cursor:pointer;transition:.3s}
+.course-card:hover{border-color:var(--neon);transform:translateY(-5px)}
+.course-card i{font-size:45px;color:var(--neon);margin-bottom:15px}
+
+#courseView{display:none}
+.back-btn{background:none;border:1px solid var(--neon);color:var(--neon);padding:10px 20px;border-radius:8px;cursor:pointer;margin-bottom:20px;font-weight:bold}
+
+.module-item{background:#1a1a1a;padding:22px;border-radius:12px;margin-bottom:12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-left:5px solid var(--neon)}
+
+#quizTrigger{text-align:center;margin-top:40px;padding:40px;border:1px dashed var(--neon);border-radius:15px}
+#quizBox{display:none;background:#0a0a0a;padding:30px;border-radius:15px;border:1px solid var(--neon);margin-top:30px}
+.q-block{margin-bottom:25px;padding-bottom:15px;border-bottom:1px solid #222}
+.opt{display:block;background:#1a1a1a;padding:15px;margin:10px 0;border-radius:10px}
+.btn-submit{background:var(--neon);color:#000;padding:15px 30px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;width:100%;font-size:18px;margin-top:20px}
+</style>
+
+<div class="sidebar">
+<div class="logo"><i class="fas fa-graduation-cap"></i> AWS HUB</div>
+</div>
+
+<div class="main">
+
+<div id="homeView">
+<h1 class="title">Professional Learning Dashboard</h1>
+<p style="color:#666;">Choose from AWS specialized courses.</p>
+<div class="course-grid" id="grid"></div>
+</div>
+
+<div id="courseView">
+
+<button class="back-btn" onclick="goBackToDashboard()">
+<i class="fas fa-arrow-left"></i> BACK TO DASHBOARD
+</button>
+
+<h1 id="courseTitle" style="margin-bottom:25px;color:var(--neon);"></h1>
+
+<div id="moduleList"></div>
+
+<div id="quizTrigger">
+<h3 style="color:var(--neon)">Module 4: Knowledge Check</h3>
+<p style="margin:10px 0 20px;color:#888;">Start the quiz.</p>
+<button class="btn-submit" style="width:auto" onclick="showQuiz()">START QUIZ</button>
+</div>
+
+<div id="quizBox">
+<div id="quizContent"></div>
+<button class="btn-submit" onclick="grade()">SUBMIT ANSWERS</button>
+<div id="finalRes" style="text-align:center;margin-top:25px;font-size:24px;"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+const courses=[
+
+{
+id:0,
+name:"Cloud Practitioner",
+videos:[
+{t:"Module 1 Cloud Concepts",url:"https://www.youtube.com/watch?v=NhDYbskXRgc"},
+{t:"Module 2 AWS Services",url:"https://www.youtube.com/watch?v=3hLmDS179YE"},
+{t:"Module 3 Pricing Model",url:"https://www.youtube.com/watch?v=ulprqHHWlng"}
+],
+quiz:[
+{q:"Which AWS service stores files?",o:["EC2","S3","Lambda","IAM"],a:1},
+{q:"AWS pricing model?",o:["Pay as you go","Fixed yearly","Free always","None"],a:0},
+{q:"Compute service?",o:["EC2","S3","RDS","CloudFront"],a:0}
+]
+},
+
+{
+id:1,
+name:"Solutions Architect",
+videos:[
+{t:"Module 1 Architecture",url:"https://www.youtube.com/watch?v=Ia-UEYYR44s"},
+{t:"Module 2 Networking",url:"https://www.youtube.com/watch?v=2LaAJq1lB1Q"},
+{t:"Module 3 Database Design",url:"https://www.youtube.com/watch?v=VJtXhM5uF2A"}
+],
+quiz:[
+{q:"What is VPC?",o:["Virtual Private Cloud","Virtual Public Cloud","Private Container","Virtual Panel"],a:0},
+{q:"DNS service?",o:["Route53","S3","IAM","Lambda"],a:0},
+{q:"Database service?",o:["RDS","EC2","CloudFront","IAM"],a:0}
+]
+},
+
+{
+id:2,
+name:"Developer Associate",
+videos:[
+{t:"Module 1 SDK",url:"https://www.youtube.com/watch?v=8b6B2L9kZkA"},
+{t:"Module 2 Lambda",url:"https://www.youtube.com/watch?v=1hHMwLxN6EM"},
+{t:"Module 3 CI/CD",url:"https://www.youtube.com/watch?v=9pZ2xmsSDdo"}
+],
+quiz:[
+{q:"Serverless compute?",o:["Lambda","EC2","S3","RDS"],a:0},
+{q:"CI/CD service?",o:["CodePipeline","IAM","S3","VPC"],a:0},
+{q:"API management?",o:["API Gateway","S3","EC2","IAM"],a:0}
+]
+},
+
+{
+id:3,
+name:"Security Specialty",
+videos:[
+{t:"Module 1 Security Basics",url:"https://www.youtube.com/watch?v=4dG6GvIvcvA"},
+{t:"Module 2 IAM",url:"https://www.youtube.com/watch?v=NhDYbskXRgc"},
+{t:"Module 3 Encryption",url:"https://www.youtube.com/watch?v=VJtXhM5uF2A"}
+],
+quiz:[
+{q:"Access control service?",o:["IAM","S3","EC2","Lambda"],a:0},
+{q:"Encryption keys?",o:["KMS","IAM","EC2","S3"],a:0},
+{q:"Security monitoring?",o:["GuardDuty","EC2","S3","IAM"],a:0}
+]
+},
+
+{
+id:4,
+name:"Machine Learning",
+videos:[
+{t:"Module 1 ML Basics",url:"https://www.youtube.com/watch?v=NHYb0D9nU9I"},
+{t:"Module 2 SageMaker",url:"https://www.youtube.com/watch?v=3hLmDS179YE"},
+{t:"Module 3 AI Deployment",url:"https://www.youtube.com/watch?v=NhDYbskXRgc"}
+],
+quiz:[
+{q:"ML service?",o:["SageMaker","EC2","IAM","S3"],a:0},
+{q:"Training dataset stored in?",o:["S3","Lambda","EC2","IAM"],a:0},
+{q:"AI image recognition?",o:["Rekognition","S3","EC2","IAM"],a:0}
+]
+}
+
+];
+
+function init(){
+const g=document.getElementById("grid");
+courses.forEach(c=>{
+g.innerHTML+=`<div class="course-card" onclick="openC(${c.id})">
+<i class="fas fa-server"></i>
+<h3>${c.name}</h3>
+</div>`;
+});
+}
+
+let active=null;
+
+function openC(id){
+active=courses[id];
+document.getElementById("homeView").style.display="none";
+document.getElementById("courseView").style.display="block";
+document.getElementById("courseTitle").innerText=active.name;
+
+let h="";
+active.videos.forEach(v=>{
+h+=`<div class="module-item" onclick="play('${v.url}')">
+<span>📦 ${v.t}</span>
+<span style="color:#00ffd5">WATCH</span>
+</div>`;
+});
+
+document.getElementById("moduleList").innerHTML=h;
+}
+
+function play(u){
+window.open(u,"_blank");
+}
+
+function showQuiz(){
+document.getElementById("quizTrigger").style.display="none";
+document.getElementById("quizBox").style.display="block";
+
+let qh="";
+active.quiz.forEach((q,i)=>{
+qh+=`<div class="q-block">
+<p><b>Q${i+1}: ${q.q}</b></p>
+${q.o.map((opt,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`).join("")}
+</div>`;
+});
+
+document.getElementById("quizContent").innerHTML=qh;
+}
+
+function grade(){
+let s=0;
+active.quiz.forEach((q,i)=>{
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+if(sel && parseInt(sel.value)===q.a) s++;
+});
+const total = active.quiz.length;
+document.getElementById("finalRes").innerHTML=
+s>=2?`<span style="color:#00ffd5">🎉 Passed! Score: ${s}/${total}</span>`:
+`<span style="color:#ff4444">❌ Try Again. Score: ${s}/${total}</span>`;
+}
+function goBackToDashboard(){
+window.location.href="{{ url_for('dashboard') }}";
+}
+
+init();
+
+</script>
+
+{% endblock %}

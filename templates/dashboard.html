@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block title %}Career Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        --neon-cyan: #00ffd5;
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+
+    nav, .navbar, header { display: none !important; }
+
+    .wrapper { display: flex; min-height: 100vh; }
+
+    /* SIDEBAR */
+    .sidebar {
+        width: 280px;
+        background: #0a0a0a;
+        border-right: 1px solid var(--glass-border);
+        padding: 40px 20px;
+        position: fixed;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .student-logo-circle {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        background: linear-gradient(#000, #000) padding-box,
+                    linear-gradient(135deg, #00ffd5, #0055ff) border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0, 255, 213, 0.3);
+    }
+
+    .v-career-text {
+        color: var(--neon-cyan);
+        font-weight: 900;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+    }
+
+    .nav-links { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+    
+    .nav-item {
+        background: var(--glass-bg);
+        color: #fff;
+        text-decoration: none;
+        padding: 15px 20px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: 0.3s;
+    }
+    .nav-item:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
+
+    /* MAIN CONTENT */
+    .main-content { margin-left: 280px; flex: 1; padding: 60px 40px; }
+
+    .main-heading {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 50px;
+        background: linear-gradient(to right, #fff, var(--neon-cyan));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+
+    .card-3d {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 25px;
+        padding: 45px 30px;
+        text-align: center;
+        transition: 0.4s;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+    .card-3d:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon-cyan);
+    }
+
+    .capsule-btn {
+        background: var(--neon-cyan);
+        color: #000;
+        text-decoration: none;
+        padding: 12px 40px;
+        border-radius: 50px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+    .capsule-btn:hover { box-shadow: 0 0 20px var(--neon-cyan); transform: scale(1.05); }
+</style>
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="student-logo-circle">🎓</div>
+        
+        <div class="v-career-text">VIRTUAL CAREER</div>
+
+        <div class="nav-links">
+            <a href="#" class="nav-item">🏠 Dashboard</a>
+            <!-- FIXED: aws_hub -> aws_learning_dashboard -->
+            <a href="{{ url_for('aws_learning_dashboard') }}" class="nav-item">☁️ AWS Learning Hub</a>
+            <a href="{{ url_for('logout') }}" class="nav-item" style="color: #ff5555; margin-top: 30px;">🚪 Logout</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="main-content">
+        <h1 class="main-heading">Welcome to Virtual Career Counseling</h1>
+
+        <div class="card-grid">
+            <!-- FIXED AWS LEARNING HUB CARD -->
+            <div class="card-3d">
+                <div style="font-size: 4rem; margin-bottom: 20px;">☁️</div>
+                <h2>AWS Learning Hub</h2>
+                <p>15 AWS Professional Courses + Quizzes</p>
+                <!-- FIXED: class மாற்றி, correct url -->
+                <a href="{{ url_for('aws_learning_dashboard') }}" class="capsule-btn">🚀 START LEARNING</a>
+            </div>
+
+            <!-- ORIGINAL CARDS -->
+            <div class="card-3d">
+                <h2>AWS Register</h2>
+                <p>Register for certifications</p>
+                <a href="{{ url_for('aws_register') }}" class="capsule-btn">OPEN</a>
+            </div>
+
+            <div class="card-3d">
+                <h2>Register List</h2>
+                <p>View registered students</p>
+                <a href="{{ url_for('aws_list') }}" class="capsule-btn">VIEW</a>
+            </div>
+
+            <div class="card-3d">
+                <h2>Job Recommended</h2>
+                <p>AI Career Matching</p>
+                <a href="{{ url_for('job_recommendations') }}" class="capsule-btn">EXPLORE</a>
+            </div>
+
+            <div class="card-3d">
+                <h2>Course Recommended</h2>
+                <p>Personalized Pathways</p>
+                <a href="{{ url_for('recommendations') }}" class="capsule-btn">LEARN</a>
+            </div>
+
+            <div class="card-3d">
+                <h2>Career Path</h2>
+                <p>Your Journey Map</p>
+                <a href="#" class="capsule-btn">VIEW</a>
+            </div>
+
+            <div class="card-3d">
+                <h2>About</h2>
+                <p>System Information</p>
+                <a href="{{ url_for('about') }}" class="capsule-btn">INFO</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

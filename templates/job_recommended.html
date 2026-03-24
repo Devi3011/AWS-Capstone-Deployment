@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+{% block title %}AI Job Intelligence{% endblock %}
+
+{% block content %}
+
+<style>
+:root{
+--glass: rgba(255,255,255,0.03);
+--border: rgba(255,255,255,0.1);
+--neon:#00ffd5;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background: radial-gradient(circle at center,#1a1a2e 0%,#000 100%);
+color:white;
+font-family:'Poppins',sans-serif;
+}
+
+nav,.navbar,header{
+display:none !important;
+}
+
+.wrapper{
+max-width:1100px;
+margin:auto;
+padding:80px 20px;
+}
+
+.header-box{
+text-align:center;
+margin-bottom:60px;
+background:var(--glass);
+padding:40px;
+border-radius:30px;
+border:1px solid var(--border);
+}
+
+.title{
+font-size:2.5rem;
+font-weight:900;
+background:linear-gradient(45deg,#fff,var(--neon));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stack{
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+.card{
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:35px;
+padding:45px;
+backdrop-filter:blur(20px);
+transition:.4s;
+box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:var(--neon);
+box-shadow:0 0 40px rgba(0,255,213,.3);
+}
+
+.role{
+font-size:1.7rem;
+color:var(--neon);
+font-weight:800;
+margin-bottom:20px;
+}
+
+.info{
+color:#ccc;
+line-height:2;
+font-size:1.05rem;
+}
+
+.btn{
+display:inline-block;
+margin-top:60px;
+padding:18px 60px;
+background:var(--neon);
+color:black;
+text-decoration:none;
+border-radius:100px;
+font-weight:900;
+}
+
+</style>
+
+
+<div class="wrapper">
+
+<div class="header-box">
+<h1 class="title">AI Career Job Intelligence</h1>
+<p style="color:#777;margin-top:10px;">
+Cloud Career Opportunities Based on AWS Certifications
+</p>
+</div>
+
+
+<div class="stack">
+
+<!-- 1 -->
+<div class="card">
+<div class="role">☁️ Cloud Support Engineer</div>
+<div class="info">
+<b>Course:</b> AWS Cloud Practitioner <br>
+<b>Salary:</b> ₹4L – ₹10L <br>
+<b>Location:</b> Chennai, Bangalore, Hyderabad <br>
+<b>Companies:</b> TCS, Infosys, AWS, Accenture
+</div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+<div class="role">🏗️ Cloud Solutions Architect</div>
+<div class="info">
+<b>Course:</b> AWS Solutions Architect <br>
+<b>Salary:</b> ₹12L – ₹40L <br>
+<b>Location:</b> Bangalore, USA, Singapore <br>
+<b>Companies:</b> Amazon, Microsoft, Google
+</div>
+</div>
+
+<!-- 3 -->
+<div class="card">
+<div class="role">💻 Cloud Developer</div>
+<div class="info">
+<b>Course:</b> AWS Developer Associate <br>
+<b>Salary:</b> ₹6L – ₹20L <br>
+<b>Location:</b> Bangalore, Pune, Hyderabad <br>
+<b>Companies:</b> Zoho, Amazon, Freshworks
+</div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+<div class="role">🔧 Cloud Operations Engineer</div>
+<div class="info">
+<b>Course:</b> AWS SysOps Administrator <br>
+<b>Salary:</b> ₹5L – ₹18L <br>
+<b>Location:</b> Chennai, Bangalore <br>
+<b>Companies:</b> IBM, Cognizant, Capgemini
+</div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+<div class="role">⚙️ DevOps Engineer</div>
+<div class="info">
+<b>Course:</b> AWS DevOps Engineer <br>
+<b>Salary:</b> ₹8L – ₹30L <br>
+<b>Location:</b> Bangalore, Gurgaon <br>
+<b>Companies:</b> Amazon, Flipkart, Razorpay
+</div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+<div class="role">🛡️ Cloud Security Engineer</div>
+<div class="info">
+<b>Course:</b> AWS Security Specialty <br>
+<b>Salary:</b> ₹10L – ₹35L <br>
+<b>Location:</b> Bangalore, Hyderabad <br>
+<b>Companies:</b> Palo Alto, Cisco, AWS
+</div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+<div class="role">🤖 Machine Learning Engineer</div>
+<div class="info">
+<b>Course:</b> AWS Machine Learning Specialty <br>
+<b>Salary:</b> ₹10L – ₹40L <br>
+<b>Location:</b> Bangalore, USA <br>
+<b>Companies:</b> Google, NVIDIA, Amazon
+</div>
+</div>
+
+<!-- 8 -->
+<div class="card">
+<div class="role">🗄️ Database Administrator</div>
+<div class="info">
+<b>Course:</b> AWS Database Specialty <br>
+<b>Salary:</b> ₹7L – ₹25L <br>
+<b>Location:</b> Bangalore, Pune <br>
+<b>Companies:</b> Oracle, IBM, PayPal
+</div>
+</div>
+
+<!-- 9 -->
+<div class="card">
+<div class="role">🌐 Network Engineer</div>
+<div class="info">
+<b>Course:</b> AWS Networking Specialty <br>
+<b>Salary:</b> ₹8L – ₹28L <br>
+<b>Location:</b> Chennai, Bangalore <br>
+<b>Companies:</b> Cisco, Juniper, HCL
+</div>
+</div>
+
+<!-- 10 -->
+<div class="card">
+<div class="role">🔌 Senior Network Architect</div>
+<div class="info">
+<b>Course:</b> AWS Advanced Networking <br>
+<b>Salary:</b> ₹12L – ₹35L <br>
+<b>Location:</b> Bangalore, Singapore <br>
+<b>Companies:</b> Cisco, AWS
+</div>
+</div>
+
+<!-- 11 -->
+<div class="card">
+<div class="role">📊 Big Data Engineer</div>
+<div class="info">
+<b>Course:</b> AWS Big Data Specialty <br>
+<b>Salary:</b> ₹8L – ₹30L <br>
+<b>Location:</b> Bangalore, Hyderabad <br>
+<b>Companies:</b> Uber, Amazon, Swiggy
+</div>
+</div>
+
+<!-- 12 -->
+<div class="card">
+<div class="role">🧠 AI Engineer</div>
+<div class="info">
+<b>Course:</b> AWS AI & Generative AI <br>
+<b>Salary:</b> ₹12L – ₹45L <br>
+<b>Location:</b> USA, Bangalore <br>
+<b>Companies:</b> OpenAI, Google, Microsoft
+</div>
+</div>
+
+<!-- 13 -->
+<div class="card">
+<div class="role">🔐 Cloud Security Architect</div>
+<div class="info">
+<b>Course:</b> AWS Cloud Security <br>
+<b>Salary:</b> ₹10L – ₹40L <br>
+<b>Location:</b> Bangalore <br>
+<b>Companies:</b> AWS, Palo Alto
+</div>
+</div>
+
+<!-- 14 -->
+<div class="card">
+<div class="role">⚡ Serverless Developer</div>
+<div class="info">
+<b>Course:</b> AWS Serverless Applications <br>
+<b>Salary:</b> ₹6L – ₹20L <br>
+<b>Location:</b> Remote, Bangalore <br>
+<b>Companies:</b> Amazon, Zoho
+</div>
+</div>
+
+<!-- 15 -->
+<div class="card">
+<div class="role">🚚 Cloud Migration Engineer</div>
+<div class="info">
+<b>Course:</b> AWS Cloud Migration <br>
+<b>Salary:</b> ₹10L – ₹30L <br>
+<b>Location:</b> Bangalore, Hyderabad <br>
+<b>Companies:</b> Accenture, Deloitte
+</div>
+</div>
+
+</div>
+
+
+<div style="text-align:center">
+
+<a href="{{ url_for('dashboard') }}" class="btn">
+🏠 BACK TO DASHBOARD
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

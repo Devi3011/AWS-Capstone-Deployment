@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neural Career Matrix</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #0a0a0f; color: white; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #111; }
+        header a { color: #00ffcc; text-decoration: none; font-weight: 600; margin-left: 1rem; }
+        header a:hover { color: #ff00ff; }
+        .container { padding: 2rem; }
+    </style>
+</head>
+<body>
+<header>
+    <div><strong>Neural Career Matrix</strong></div>
+    <nav>
+        {% if session.username %}
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('aws_register') }}">AWS Register</a>
+            <a href="{{ url_for('aws_list') }}">Registrations</a>
+            <a href="{{ url_for('career_path') }}">Career Path</a>
+            <a href="{{ url_for('recommendations') }}">Course Recommendations</a>
+            <a href="{{ url_for('job_recommendations') }}">Job Recommendations</a>
+            <a href="{{ url_for('counsel') }}">Counsel</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Home</a>
+        {% endif %}
+    </nav>
+</header>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

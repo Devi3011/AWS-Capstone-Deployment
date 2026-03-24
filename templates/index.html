@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Neural Login - Virtual Career{% endblock %}
+
+{% block content %}
+<div style="min-height:80vh; display:flex; justify-content:center; align-items:center;">
+    <div style="background:rgba(255,255,255,0.05); padding:3rem; border-radius:25px; max-width:500px; width:100%;">
+        <h1 style="text-align:center; font-size:3rem; background:linear-gradient(45deg,#00ffcc,#ff00ff); -webkit-background-clip:text; color:transparent; margin-bottom:2rem;">
+            🔐 Neural Login
+        </h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div style="margin-bottom:1rem; padding:1rem; background: rgba(255,0,0,0.2); border-radius:10px;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div style="margin-bottom:1.5rem;">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="virtual career" required style="width:100%; padding:1rem; border-radius:15px; border:1px solid #00ffcc; background: rgba(255,255,255,0.05); color:white;">
+            </div>
+            <div style="margin-bottom:1.5rem;">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="counselor" required style="width:100%; padding:1rem; border-radius:15px; border:1px solid #ff00ff; background: rgba(255,255,255,0.05); color:white;">
+            </div>
+            <button type="submit" style="width:100%; padding:1rem; border:none; border-radius:20px; background:linear-gradient(45deg,#00ffcc,#00ccff); font-weight:bold; cursor:pointer;">🚀 Enter Dashboard</button>
+        </form>
+
+        <div style="margin-top:2rem; padding:1rem; background: rgba(255,255,255,0.05); border-radius:15px; text-align:center;">
+            <p>💡 Demo Credentials:</p>
+            <p><strong>virtual career / counselor</strong></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

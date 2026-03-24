@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AWS Register</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    background:linear-gradient(135deg,#0a0a0f 0%,#1a0a2e 100%);
+    color:#fff;
+    font-family:Segoe UI,sans-serif;
+    min-height:100vh;
+    padding:20px;
+}
+.container{
+    max-width:600px;
+    margin:0 auto;
+    background:rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:25px;
+    backdrop-filter:blur(20px);
+    border:2px solid rgba(0,255,204,0.3);
+}
+h1{
+    text-align:center;
+    background:linear-gradient(45deg,#00ffcc,#ff00ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-size:2.5rem;
+    margin-bottom:30px;
+}
+.form-group{margin-bottom:25px;}
+label{
+    display:block;
+    color:#00ffcc;
+    margin-bottom:10px;
+    font-weight:700;
+    font-size:1.1rem;
+}
+
+input[type="text"],input[type="email"],input[type="tel"]{
+    width:100%;
+    padding:15px;
+    border:2px solid rgba(0,255,204,0.3);
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    color:#fff;
+    font-size:16px;
+    transition:all 0.3s;
+}
+
+input:focus{
+    outline:none;
+    border-color:#00ffcc;
+    box-shadow:0 0 20px rgba(0,255,204,0.4);
+    transform:translateY(-2px);
+}
+
+input::placeholder{color:rgba(255,255,255,0.7);}
+
+.courses{
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:15px;
+    border:1px solid rgba(0,255,204,0.2);
+    margin-top:10px;
+    max-height:400px;
+    overflow-y:auto;
+}
+
+input[type="checkbox"]{
+    width:22px;
+    height:22px;
+    margin-right:12px;
+    accent-color:#00ffcc;
+    cursor:pointer;
+}
+
+.course-label{
+    display:block;
+    margin:12px 0;
+    cursor:pointer;
+    padding:12px;
+    border-radius:12px;
+    transition:all 0.3s;
+}
+
+.course-label:hover{
+    background:rgba(0,255,204,0.1);
+    transform:translateX(8px);
+}
+
+button{
+    width:100%;
+    background:linear-gradient(45deg,#00ffcc,#00ccff);
+    color:#000;
+    padding:18px;
+    border:none;
+    border-radius:15px;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-top:25px;
+    transition:all 0.4s;
+    box-shadow:0 15px 40px rgba(0,255,204,0.4);
+}
+
+button:hover{
+    transform:translateY(-5px) scale(1.05);
+    background:linear-gradient(45deg,#ff00ff,#cc00ff);
+    color:#fff!important;
+    box-shadow:0 25px 60px rgba(255,0,255,0.6);
+}
+
+.back{text-align:center;margin-top:25px;}
+.back a{color:#00ffcc;text-decoration:none;font-size:1.1rem;font-weight:600;}
+.back a:hover{color:#ff00ff;}
+
+.warning{color:#ffaa00;font-size:0.9rem;margin-top:10px;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>☁️ AWS Registration</h1>
+
+<!-- Flask-ready form: action points to aws_register route -->
+<form method="POST" action="{{ url_for('aws_register') }}" onsubmit="return validateCourses()">
+
+<div class="form-group">
+<label>First Name *</label>
+<input type="text" name="first_name" placeholder="Enter first name" required>
+</div>
+
+<div class="form-group">
+<label>Last Name *</label>
+<input type="text" name="last_name" placeholder="Enter last name" required>
+</div>
+
+<div class="form-group">
+<label>Email ID *</label>
+<input type="email" name="email" placeholder="your.email@example.com" required>
+</div>
+
+<div class="form-group">
+<label>Phone Number *</label>
+<input type="tel" name="phone" placeholder="98xxxxxxxx" required>
+</div>
+
+<div class="form-group">
+<label>Select Courses (Minimum choose 1):</label>
+<div class="courses">
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Cloud Practitioner">
+☁️ AWS Cloud Practitioner (₹3000)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Solutions Architect Associate">
+🏗️ AWS Solutions Architect Associate (₹6500)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Developer Associate">
+💻 AWS Developer Associate (₹6000)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS SysOps Administrator">
+🔧 AWS SysOps Administrator (₹6200)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS DevOps Engineer Professional">
+⚙️ AWS DevOps Engineer Professional (₹8500)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Security Specialty">
+🛡️ AWS Security Specialty (₹7500)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Machine Learning Specialty">
+🤖 AWS Machine Learning Specialty (₹9000)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Database Specialty">
+🗄️ AWS Database Specialty (₹7000)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Networking Specialty">
+🌐 AWS Networking Specialty (₹7200)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Advanced Networking">
+🔌 AWS Advanced Networking (₹9500)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Big Data Specialty">
+📊 AWS Big Data Specialty (₹8000)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS AI & Generative AI">
+🧠 AWS AI & Generative AI (₹10000)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Cloud Security">
+🔐 AWS Cloud Security (₹7800)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Serverless Applications">
+⚡ AWS Serverless Applications (₹6800)
+</label>
+
+<label class="course-label">
+<input type="checkbox" name="courses" value="AWS Cloud Migration">
+🚚 AWS Cloud Migration (₹7200)
+</label>
+
+</div>
+
+<div class="warning">⚠️ Minimum 1 course select pannunga!</div>
+</div>
+
+<button type="submit">🚀 Complete Registration + Send Email Notification</button>
+
+</form>
+
+<div class="back">
+<a href="{{ url_for('dashboard') }}">← Back to Dashboard</a>
+</div>
+
+</div>
+
+<script>
+function validateCourses(){
+    let courses = document.querySelectorAll('input[name="courses"]:checked');
+    if(courses.length === 0){
+        alert("Please select at least one course!");
+        return false;
+    }
+    return true;
+}
+</script>
+
+</body>
+</html>

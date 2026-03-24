@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% block title %}Course Intelligence - Neural Path{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        --glass: rgba(255, 255, 255, 0.03);
+        --border: rgba(255, 255, 255, 0.1);
+        --neon: #00ffd5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+        background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%); 
+        color: #fff; 
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Navbar Hide */
+    nav, .navbar, header { display: none !important; }
+
+    .matrix-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
+
+    .header-info {
+        text-align: center;
+        margin-bottom: 60px;
+        background: var(--glass);
+        padding: 40px;
+        border-radius: 30px;
+        border: 1px solid var(--border);
+    }
+
+    .matrix-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, #fff, var(--neon));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .course-stack { display: flex; flex-direction: column; gap: 40px; }
+
+    /* --- 3D DEEP CARDS --- */
+    .detail-card {
+        background: var(--glass);
+        backdrop-filter: blur(25px);
+        border: 1px solid var(--border);
+        border-radius: 35px;
+        padding: 45px;
+        transition: 0.5s;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    .detail-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon);
+        box-shadow: 0 0 40px rgba(0, 255, 213, 0.2);
+    }
+
+    .course-title-3d {
+        font-size: 1.8rem;
+        color: var(--neon);
+        font-weight: 800;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .deep-info {
+        color: #ccc;
+        line-height: 2;
+        font-size: 1.05rem;
+        text-align: justify;
+    }
+
+    .btn-3d {
+        display: inline-block;
+        margin-top: 50px;
+        padding: 18px 60px;
+        background: var(--neon);
+        color: #000;
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 900;
+        box-shadow: 0 10px 30px rgba(0, 255, 213, 0.3);
+        transition: 0.3s;
+    }
+
+    .btn-3d:hover { transform: scale(1.1); box-shadow: 0 0 50px var(--neon); }
+</style>
+
+<div class="matrix-wrapper">
+    <div class="header-info">
+        <h1 class="matrix-title">AI Virtual Career Counseling Path</h1>
+        <p style="color: #666; margin-top: 10px;">Deep Intelligence Analysis for 15 Professional Cloud Pathways</p>
+    </div>
+
+    <div class="course-stack">
+        
+        <!-- 1. AWS Cloud Practitioner -->
+        <div class="detail-card">
+            <div class="course-title-3d">☁️ AWS Cloud Practitioner (Foundation)</div>
+            <div class="deep-info">
+                The AWS Cloud Practitioner path is the foundational pillar for any cloud-based career. Our AI identifies this as the essential first step to mastering the Amazon Web Services global infrastructure. This module covers core cloud concepts including high availability, elasticity, and fault tolerance across multiple Availability Zones. You will explore key services like EC2 for compute, S3 for object storage, and RDS for database management in a production environment. The curriculum deeply explains the Shared Responsibility Model to ensure secure data handling. You will learn to navigate billing dashboards and pricing models to optimize enterprise-level cloud spending. It also introduces compliance standards and various support tiers for global organizations. This path validates your basic cloud proficiency before moving into specialized technical domains. It is the perfect starting point for building a professional career in cloud-native software development. By completing this, you establish a solid architectural foundation for your AI-generated roadmap.
+            </div>
+        </div>
+
+        <!-- 2. AWS Solutions Architect -->
+        <div class="detail-card">
+            <div class="course-title-3d">🏗️ AWS Solutions Architect Associate</div>
+            <div class="deep-info">
+                The Solutions Architect path focuses on the art of designing resilient, high-performing, and cost-optimized distributed systems on AWS. You will master the Well-Architected Framework across its five core pillars: Operational Excellence, Security, Reliability, Performance, and Cost Optimization. The course provides deep technical knowledge on Virtual Private Clouds (VPC) and how to design isolated network topologies. You will learn to implement Elastic Load Balancing (ELB) and Auto-Scaling to handle massive traffic spikes seamlessly. The curriculum covers database optimization, helping you choose between SQL (RDS) and NoSQL (DynamoDB) based on application data flow. You will explore advanced storage solutions like EFS for shared file access and Glacier for long-term data archiving. Security integration with IAM (Identity and Access Management) is a core component of this deep technical study. It also covers disaster recovery strategies to keep businesses running during unexpected regional outages. This certification proves your ability to design the backbone of modern enterprise cloud software.
+            </div>
+        </div>
+
+        <!-- 3. AWS Developer Associate -->
+        <div class="detail-card">
+            <div class="course-title-3d">💻 AWS Developer Associate</div>
+            <div class="deep-info">
+                The Developer Associate path is tailored for those who want to build and deploy cloud-native applications directly on the AWS platform. You will learn to use AWS SDKs to interact with services like S3 and DynamoDB from within your source code. The course deep dives into serverless computing using AWS Lambda and API Gateway for creating modern, event-driven microservices. You will master the deployment of code using AWS CodeDeploy and manage application secrets with Secrets Manager. The curriculum covers performance tuning of cloud-native applications and efficient use of AWS X-Ray for real-time debugging. You will explore containerization strategies using Amazon ECS and Fargate for deploying Dockerized applications at scale. Security is a major focus, specifically managing IAM roles for applications and authentication for web and mobile apps. It also covers event-driven architecture using SQS and SNS to build highly decoupled and reliable systems. By completion, you will be proficient in developing scalable apps that fully leverage the AWS cloud ecosystem.
+            </div>
+        </div>
+
+        <!-- 4. AWS SysOps Administrator -->
+        <div class="detail-card">
+            <div class="course-title-3d">🔧 AWS SysOps Administrator</div>
+            <div class="deep-info">
+                The SysOps Administrator path focuses on the operational management and maintenance of cloud infrastructure. You will learn to deploy, manage, and operate scalable, highly available systems on the AWS platform. The course emphasizes real-time monitoring and logging through Amazon CloudWatch to ensure system health and performance. You will master automation of repetitive infrastructure tasks using AWS Systems Manager and CloudFormation. The curriculum covers data sovereignty and auditing using AWS CloudTrail and Config for compliance management. You will learn advanced techniques for resource tagging and cost optimization at an enterprise organization level. Security patches, automated backup strategies, and lifecycle management are core components of this study. It also explores high availability through cross-region replication and multi-AZ database deployments. This is the ideal course for system administrators who want to master cloud-based operations and infrastructure health.
+            </div>
+        </div>
+
+        <!-- 5. AWS DevOps Engineer Pro -->
+        <div class="detail-card">
+            <div class="course-title-3d">⚙️ AWS DevOps Engineer Professional</div>
+            <div class="deep-info">
+                The DevOps Engineer Professional path is for experts who want to automate the entire software delivery lifecycle. You will master advanced CI/CD strategies to enable rapid, reliable, and secure application delivery in the cloud. The course deep dives into blue/green deployments and canary releases to minimize risks during production updates. You will learn to use AWS Organizations to manage multiple accounts and cross-account security policies. The curriculum emphasizes advanced automation using Lambda to respond to real-time system events and alerts. You will explore automated governance and compliance using AWS Config and Service Catalog for enterprise standards. High-level monitoring and logging across hundreds of instances are taught using centralized cloud-native solutions. It also covers performance tuning and scaling of complex, multi-tier global applications. This professional-level certification proves your ability to manage mission-critical cloud systems at a global scale.
+            </div>
+        </div>
+
+        <!-- 6. AWS Security Specialty -->
+        <div class="detail-card">
+            <div class="course-title-3d">🛡️ AWS Security Specialty</div>
+            <div class="deep-info">
+                The Security Specialty path is dedicated to mastering data protection, encryption, and threat detection on AWS. You will explore advanced encryption techniques using AWS KMS and CloudHSM for hardware-level security compliance. The course covers deep identity management through granular IAM roles, complex policies, and cross-account access. You will learn to use AWS GuardDuty and Security Hub for continuous threat monitoring and automated response. The curriculum focuses on securing network traffic using AWS WAF, Shield for DDoS protection, and Inspector. You will dive into global data privacy laws and how to maintain compliance for large enterprises. Managing security logs and auditing access via CloudTrail is a major part of this professional training. By the end, you will be able to design and implement highly secure environments for sensitive financial or government data.
+            </div>
+        </div>
+
+        <!-- 7. AWS Machine Learning Specialty -->
+        <div class="detail-card">
+            <div class="course-title-3d">🤖 AWS Machine Learning Specialty</div>
+            <div class="deep-info">
+                The Machine Learning Specialty path is for data enthusiasts who want to build and deploy sophisticated AI models. You will master Amazon SageMaker, the industry-leading platform for the full ML lifecycle from labeling to deployment. The course covers data engineering, focusing on preparing and cleaning massive datasets using AWS Glue and Athena. You will learn to choose the right ML algorithms based on specific classification, regression, or clustering problems. The curriculum deep dives into hyperparameter tuning and model optimization to ensure the highest possible prediction accuracy. You will explore advanced AI services for vision, speech, and forecasting to automate complex business processes. Security in ML, including data encryption and private VPC endpoints for SageMaker, is a key component. This course is essential for data scientists looking to lead AI-driven innovation in the modern cloud era.
+            </div>
+        </div>
+
+        <!-- 8. AWS Database Specialty -->
+        <div class="detail-card">
+            <div class="course-title-3d">🗄️ AWS Database Specialty</div>
+            <div class="deep-info">
+                The Database Specialty path is for engineers who want to manage purpose-built relational and NoSQL databases. You will explore Amazon RDS in-depth, focusing on high availability through multi-AZ deployments and read replicas. The course covers NoSQL performance tuning using Amazon DynamoDB and managing caching with ElastiCache for speed. You will learn about data migration strategies from on-premise systems using the AWS Database Migration Service (DMS). The curriculum deep dives into petabyte-scale data warehousing with Amazon Redshift for business intelligence. You will explore graph databases with Amazon Neptune and document stores with Amazon DocumentDB. Security for data, including encryption at rest and IAM-based database authentication, is a major focus. This course is essential for administrators who want to master the transition from traditional SQL to diverse cloud data solutions.
+            </div>
+        </div>
+
+        <!-- 9. AWS Networking Specialty -->
+        <div class="detail-card">
+            <div class="course-title-3d">🌐 AWS Networking Specialty</div>
+            <div class="deep-info">
+                The Networking Specialty path focuses on designing complex, large-scale network architectures on the AWS platform. You will master Virtual Private Cloud (VPC) design, including subnets, peering, and Transit Gateways for connectivity. The course provides deep technical knowledge on hybrid connectivity using Direct Connect and VPN solutions for enterprises. You will explore advanced DNS management with Route 53, focusing on latency-based and failover routing strategies. The curriculum covers high-performance networking for big data using Elastic Network Adapters and Global Accelerator. You will learn about content delivery optimization using CloudFront and global traffic management for low latency. Security integration through Network Firewalls and PrivateLink is a core part of this advanced study. This certification proves your ability to build the underlying network foundation for global enterprise cloud applications.
+            </div>
+        </div>
+
+        <!-- 10. AWS Advanced Networking -->
+        <div class="detail-card">
+            <div class="course-title-3d">🔌 AWS Advanced Networking</div>
+            <div class="deep-info">
+                This advanced path goes beyond basic VPCs to cover complex networking scenarios for multi-account cloud environments. You will learn to manage network automation and governance using AWS CloudFormation and AWS CloudWAN. The course focuses on optimizing network performance for high-throughput applications like video streaming and big data. You will master cross-region networking and managing global load balancing across multiple continents. The curriculum deep dives into security for hybrid cloud architectures, ensuring safe communication between on-premise and AWS. You will explore network troubleshooting using VPC Flow Logs and Traffic Mirroring for packet-level analysis. It also covers managing IP address spaces at scale using IP Address Manager (IPAM). This course is intended for expert-level network engineers who manage large, interconnected global cloud ecosystems.
+            </div>
+        </div>
+
+        <!-- 11. AWS Big Data Specialty -->
+        <div class="detail-card">
+            <div class="course-title-3d">📊 AWS Big Data Specialty</div>
+            <div class="deep-info">
+                The Big Data Specialty path focuses on the ecosystem for ingesting, storing, and analyzing massive datasets in real-time. You will master Amazon Kinesis for data streaming and Amazon EMR for large-scale processing using Hadoop and Spark. The course covers building data lakes using AWS Lake Formation and Amazon S3 as the primary storage layer. You will learn to perform high-speed SQL queries on petabytes of data using Amazon Athena without managing servers. The curriculum provides deep insights into data visualization and business intelligence using Amazon QuickSight. You will explore data orchestration and scheduling using AWS Step Functions and AWS Glue. Security for big data, including fine-grained access control and encryption, is a key component. This course is essential for data engineers looking to lead data-driven decision-making in large organizations.
+            </div>
+        </div>
+
+        <!-- 12. AWS AI & Generative AI -->
+        <div class="detail-card">
+            <div class="course-title-3d">🧠 AWS AI & Generative AI (Apex)</div>
+            <div class="deep-info">
+                Generative AI is the most cutting-edge field in technology, and this specialty path prepares you for the AI revolution. You will learn to leverage Amazon Bedrock to access powerful Large Language Models (LLMs) from leading labs. The course provides deep insights into Prompt Engineering, teaching you how to fine-tune AI outputs for industrial apps. You will understand how to build Retrieval-Augmented Generation (RAG) systems to connect AI with private data securely. The curriculum covers Amazon SageMaker for the full ML lifecycle, from data labeling to high-scale model deployment. You will explore natural language processing (NLP) and computer vision using specialized AWS AI services. Ethical AI implementation, focusing on safety filters and bias detection, is a critical part of the study. You will also learn about vector databases and how they power modern semantic search engines.
+            </div>
+        </div>
+
+        <!-- 13. AWS Cloud Security -->
+        <div class="detail-card">
+            <div class="course-title-3d">🔐 AWS Cloud Security (Logic)</div>
+            <div class="deep-info">
+                This comprehensive course focuses on the advanced principles of protecting cloud-native environments at the logic layer. You will dive into the technical details of VPC security groups and Network ACLs to build multi-layered defense. The study covers certificate management using AWS ACM and managing secrets through AWS Secrets Manager. You will learn about automated security scanning and vulnerability assessments using AWS Inspector. The course provides deep insights into DDoS mitigation using AWS Shield and Web Application Firewalls (WAF). You will explore encryption at rest and in transit for all core services including RDS and EBS volumes. It also covers auditing and log analysis to detect unauthorized access in real-time using CloudTrail. By the end, you will be proficient in establishing a Zero-Trust security model across your cloud organization.
+            </div>
+        </div>
+
+        <!-- 14. AWS Serverless Applications -->
+        <div class="detail-card">
+            <div class="course-title-3d">⚡ AWS Serverless Applications</div>
+            <div class="deep-info">
+                This course focuses on building modern applications without the overhead of managing or provisioning physical servers. You will master event-driven architecture using AWS Lambda and Amazon EventBridge for seamless integration. The study covers designing scalable APIs using Amazon API Gateway and handling backend persistence with DynamoDB. You will learn to build asynchronous processing pipelines using SQS and SNS for decoupling application components. The curriculum explores the AWS Serverless Application Model (SAM) for faster deployment and local testing. You will deep dive into orchestrating complex workflows using AWS Step Functions for business logic. Security for serverless apps, including IAM roles for Lambda and API authentication, is a major focus. By completion, you will be proficient in creating highly available, cost-effective apps that scale automatically.
+            </div>
+        </div>
+
+        <!-- 15. AWS Cloud Migration -->
+        <div class="detail-card">
+            <div class="course-title-3d">🚚 AWS Cloud Migration</div>
+            <div class="deep-info">
+                The Cloud Migration path focuses on the strategic and technical process of moving on-premise workloads to the cloud. You will learn to use the Migration Hub to track and manage large-scale move projects across an organization. The course covers server assessment and discovery using AWS Application Discovery Service for data gathering. You will master database migration using AWS DMS and schema conversion using the Schema Conversion Tool. The curriculum explores various migration strategies including Rehosting, Replatforming, and Refactoring for performance. You will learn to use the AWS Snow family (Snowball, Snowcone) for moving massive amounts of physical data safely. Managing security and compliance during the transition phase is a core part of the professional study. This course is vital for engineers who are leading their organization's digital transformation to AWS.
+            </div>
+        </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="{{ url_for('dashboard') }}" class="btn-3d">🏠 BACK TO DASHBOARD</a>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your AWS Career Roadmap</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            background: linear-gradient(135deg,#0a0a0f 0%,#1a0a2e 100%);
+            color:#fff;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { 
+            background: linear-gradient(45deg, #00ffcc, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+        }
+
+        /* Timeline Design */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #00ffcc;
+            top: 0; bottom: 0; left: 50%;
+            margin-left: -2px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+
+        .step {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .step::after {
+            content: '✓';
+            position: absolute;
+            width: 30px; height: 30px;
+            right: -17px; top: 15px;
+            background: #1a0a2e;
+            border: 3px solid #ff00ff;
+            border-radius: 50%;
+            z-index: 1;
+            text-align: center;
+            color: #ff00ff;
+            font-weight: bold;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -13px; }
+
+        .content {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .content:hover { transform: scale(1.05); border-color: #ff00ff; }
+        
+        .content h3 { color: #00ffcc; margin-bottom: 10px; }
+        .content p { font-size: 0.9rem; line-height: 1.5; color: #ddd; }
+
+        .job-card {
+            background: linear-gradient(45deg, rgba(0,255,204,0.1), rgba(255,0,255,0.1));
+            border: 2px dashed #00ffcc;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <p>Congratulations, {{ first_name }}!</p>
+        <h1>Your Career Path for: <br> {{ selected_course }}</h1>
+    </div>
+
+    <div class="timeline">
+        <!-- Step 1 -->
+        <div class="step left">
+            <div class="content">
+                <h3>1. Learning Phase</h3>
+                <p>Mastering AWS core services: EC2, S3, IAM, and Lambda. Hands-on labs start now.</p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step right">
+            <div class="content">
+                <h3>2. Skill Validation</h3>
+                <p>Build real-world projects and optimize cloud infrastructure for performance and cost.</p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step left">
+            <div class="content">
+                <h3>3. Global Certification</h3>
+                <p>Final exam prep for <b>{{ selected_course }}</b> to get your official AWS badge.</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step right">
+            <div class="content">
+                <h3>4. Career Launch</h3>
+                <p>Ready for technical interviews and cloud architect roles.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="job-card">
+        <h3>🎯 Potential Job Roles</h3>
+        <p>Cloud Engineer • AWS Architect • DevOps Specialist • Site Reliability Engineer</p>
+        <p style="margin-top:10px; color:#ff00ff; font-weight:bold;">Estimated Salary: ₹8L - ₹18L per annum</p>
+    </div>
+
+    <center><a href="/" class="btn-back">Go Back</a></center>
+</div>
+
+</body>
+</html>
